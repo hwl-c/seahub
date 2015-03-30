@@ -12,6 +12,8 @@ define([
             'lib/:repo_id(/*path)': 'showDir',
             'my-libs': 'showMyRepos',
             'my-libs/lib/:repo_id(/*path)': 'showMyRepoDir',
+            'my-sub-libs': 'showMySubRepos',
+            'my-sub-libs/lib/:repo_id(/*path)': 'showMySubRepoDir',
             'shared-libs': 'showSharedRepos',
             'shared-libs/lib/:repo_id(/*path)': 'showSharedRepoDir',
 
@@ -38,6 +40,11 @@ define([
             this.myHomeView.showMyRepos();
         },
 
+        showMySubRepos: function() {
+            console.log("show My Sub Repos");
+            this.myHomeView.showMySubRepos();
+        },
+
         showSharedRepos: function() {
             console.log("show shared repos");
             this.myHomeView.showSharedRepos();
@@ -50,6 +57,15 @@ define([
                 path = '/';
             }
             this.myHomeView.showDir('my-libs', repo_id, path);
+        },
+
+        showMySubRepoDir: function(repo_id, path) {
+            if (path) {
+                path = '/' + path;
+            } else {
+                path = '/';
+            }
+            this.myHomeView.showDir('my-sub-libs', repo_id, path);
         },
 
         showSharedRepoDir: function(repo_id, path) {
